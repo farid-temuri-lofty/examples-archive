@@ -1,6 +1,6 @@
-var SUPABASE_URL = 'https://ernhobnpmmupjnmxpfbt.supabase.co'
+var SUPABASE_URL = 'https://nyfrbkazhhezqpczlalt.supabase.co'
 var SUPABASE_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYxMzA5ODU0NCwiZXhwIjoxOTI4Njc0NTQ0fQ.Z9bRrfaL2oGhSuyBckFcdcnRIJDelWJ1II98OnEtLO0'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55ZnJia2F6aGhlenFwY3psYWx0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY3MTczMzg2MCwiZXhwIjoxOTg3MzA5ODYwfQ.CwW_Kl7ZvOV7tsVZlwleku9iwE6yGaUtb_shYdlJikQ'
 
 var supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
 window.userToken = null
@@ -27,7 +27,9 @@ const signUpSubmitted = (event) => {
   supabase.auth
     .signUp({ email, password })
     .then((response) => {
-      response.error ? alert(response.error.message) : setToken(response)
+      response.error
+        ? alert(response.error.message)
+        : setToken(response)
     })
     .catch((err) => {
       alert(err)
@@ -42,7 +44,9 @@ const logInSubmitted = (event) => {
   supabase.auth
     .signIn({ email, password })
     .then((response) => {
-      response.error ? alert(response.error.message) : setToken(response)
+      response.error
+        ? alert(response.error.message)
+        : window.location.replace('./prohod.html')
     })
     .catch((err) => {
       alert(err.response.text)
